@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'polls/css/styles.css' %}">
+    <title>Image to ASCII</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Go">
+    </form>
+    <p class="ascii_image">
+        {% for row in post_request %}
+            {{ row }}
+            <br>
+        {% endfor %}
+    <p>
+</body>
+</html>
